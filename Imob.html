@@ -1,0 +1,2480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VivaLar Imóveis | Encontre seu novo lar</title>
+
+    <meta name="description" content="VivaLar Imóveis - casas, apartamentos e imóveis de alto padrão.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #b88945;
+            --primary-dark: #916b34;
+            --dark: #101412;
+            --dark-2: #171c19;
+            --text: #1b211e;
+            --muted: #68716c;
+            --light: #f6f5f1;
+            --white: #ffffff;
+            --border: #e5e5df;
+            --success: #25d366;
+            --shadow: 0 20px 60px rgba(0,0,0,.10);
+            --radius: 18px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: var(--text);
+            background: #fff;
+            line-height: 1.6;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        header {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            color: white;
+        }
+
+        .navbar {
+            height: 86px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,.15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -.5px;
+        }
+
+        .logo-icon {
+            width: 39px;
+            height: 39px;
+            border: 1px solid rgba(255,255,255,.7);
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+
+        .logo span {
+            color: #e1bc82;
+        }
+
+        nav {
+            display: flex;
+            gap: 34px;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 14px;
+            opacity: .92;
+            transition: .2s;
+        }
+
+        nav a:hover {
+            color: #e3bd85;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            border: 1px solid rgba(255,255,255,.3);
+            background: rgba(255,255,255,.08);
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            transition: .2s;
+        }
+
+        .icon-btn:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 760px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, rgba(7,11,9,.82), rgba(7,11,9,.35)),
+                url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=90")
+                center/cover;
+        }
+
+        .hero-content {
+            width: 700px;
+            padding-top: 70px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #e2bc82;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: var(--primary);
+        }
+
+        h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(48px, 6vw, 78px);
+            line-height: 1.02;
+            font-weight: 500;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            max-width: 540px;
+            color: rgba(255,255,255,.78);
+            font-size: 17px;
+            margin-bottom: 40px;
+        }
+
+        .search-box {
+            background: white;
+            padding: 9px;
+            border-radius: 13px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 130px;
+            box-shadow: 0 20px 50px rgba(0,0,0,.25);
+            color: var(--text);
+        }
+
+        .search-field {
+            padding: 10px 18px;
+            border-right: 1px solid var(--border);
+        }
+
+        .search-field label {
+            display: block;
+            font-size: 11px;
+            color: #818782;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+        .search-field input,
+        .search-field select {
+            width: 100%;
+            border: none;
+            outline: none;
+            color: var(--text);
+            background: transparent;
+            font-size: 14px;
+        }
+
+        .search-button {
+            border: none;
+            border-radius: 9px;
+            color: white;
+            background: var(--primary);
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .search-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* STATS */
+
+        .stats {
+            background: var(--dark);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            padding: 30px 0;
+        }
+
+        .stat {
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,.1);
+        }
+
+        .stat:last-child {
+            border: none;
+        }
+
+        .stat strong {
+            font-family: "Playfair Display", serif;
+            font-size: 30px;
+            display: block;
+            color: #dfb97f;
+        }
+
+        .stat span {
+            font-size: 12px;
+            color: #a8aea9;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 105px 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            max-width: 620px;
+        }
+
+        .section-title h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(35px, 4vw, 51px);
+            line-height: 1.1;
+            margin-top: 12px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            margin-top: 15px;
+        }
+
+        .view-all {
+            color: var(--primary-dark);
+            font-weight: 700;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--primary);
+            padding-bottom: 4px;
+        }
+
+        /* PROPERTY GRID */
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 24px;
+        }
+
+        .property-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .property-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow);
+        }
+
+        .property-image {
+            height: 265px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .property-image img {
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .property-card:hover .property-image img {
+            transform: scale(1.05);
+        }
+
+        .tag {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            padding: 6px 10px;
+            background: var(--dark);
+            color: white;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .favorite {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,.94);
+            font-size: 18px;
+            transition: .2s;
+        }
+
+        .favorite.active {
+            background: #fff1f1;
+            color: #e05252;
+        }
+
+        .property-body {
+            padding: 21px;
+        }
+
+        .property-location {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .property-name {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        .property-description {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 17px;
+        }
+
+        .property-features {
+            display: flex;
+            gap: 16px;
+            color: #616963;
+            font-size: 12px;
+            padding-bottom: 17px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .property-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 17px;
+        }
+
+        .price small {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .price strong {
+            font-size: 19px;
+        }
+
+        .details-btn {
+            border: none;
+            background: #f2f1ed;
+            padding: 10px 13px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .details-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: var(--light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 90px;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+            padding-right: 60px;
+            padding-bottom: 60px;
+        }
+
+        .about-main {
+            height: 520px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .about-small {
+            position: absolute;
+            width: 230px;
+            height: 180px;
+            object-fit: cover;
+            right: 0;
+            bottom: 0;
+            border: 9px solid var(--light);
+            border-radius: 15px;
+        }
+
+        .about-text h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 48px;
+            line-height: 1.1;
+            margin: 15px 0 22px;
+        }
+
+        .about-text > p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .check-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .check-list li {
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            display: inline-grid;
+            place-items: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #e8dbc7;
+            color: var(--primary-dark);
+            margin-right: 10px;
+            font-weight: 700;
+        }
+
+        .primary-btn {
+            display: inline-flex;
+            padding: 14px 21px;
+            background: var(--dark);
+            color: white;
+            border-radius: 9px;
+            border: none;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .primary-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* CATEGORIES */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 17px;
+        }
+
+        .category {
+            height: 270px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            color: white;
+        }
+
+        .category img {
+            height: 100%;
+            object-fit: cover;
+            transition: .4s;
+        }
+
+        .category::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 30%, rgba(0,0,0,.75));
+        }
+
+        .category:hover img {
+            transform: scale(1.07);
+        }
+
+        .category-content {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+        }
+
+        .category-content h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 25px;
+        }
+
+        .category-content span {
+            font-size: 12px;
+            color: #ddd;
+        }
+
+        /* CTA */
+
+        .cta {
+            background: var(--dark);
+            color: white;
+            padding: 90px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(38px,5vw,58px);
+            line-height: 1.1;
+            max-width: 700px;
+            margin: 0 auto 18px;
+        }
+
+        .cta p {
+            color: #aab0ac;
+            max-width: 550px;
+            margin: auto auto 30px;
+        }
+
+        .cta .primary-btn {
+            background: var(--primary);
+        }
+
+        .cta .primary-btn:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* CONTACT */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 80px;
+        }
+
+        .contact-info h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 45px;
+            line-height: 1.1;
+            margin: 15px 0;
+        }
+
+        .contact-info > p {
+            color: var(--muted);
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 13px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            background: var(--light);
+            border-radius: 10px;
+        }
+
+        .contact-item div:last-child {
+            font-size: 13px;
+        }
+
+        .contact-item small {
+            display: block;
+            color: var(--muted);
+        }
+
+        .contact-form {
+            background: var(--light);
+            padding: 35px;
+            border-radius: 17px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            outline: none;
+            background: white;
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            background: var(--dark);
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #0b0f0d;
+            color: white;
+            padding: 65px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 45px;
+        }
+
+        .footer-brand p {
+            color: #8e9691;
+            font-size: 13px;
+            max-width: 300px;
+            margin-top: 17px;
+        }
+
+        footer h4 {
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin: 9px 0;
+            color: #8e9691;
+            font-size: 13px;
+        }
+
+        footer li:hover {
+            color: white;
+        }
+
+        .copyright {
+            padding-top: 22px;
+            border-top: 1px solid rgba(255,255,255,.08);
+            color: #6f7772;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* WHATSAPP */
+
+        .whatsapp {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: var(--success);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-size: 27px;
+            box-shadow: 0 10px 30px rgba(37,211,102,.35);
+            z-index: 200;
+            transition: .2s;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.08);
+        }
+
+        /* MODAL */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.72);
+            z-index: 500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            width: min(900px, 100%);
+            max-height: 90vh;
+            overflow-y: auto;
+            background: white;
+            border-radius: 18px;
+            position: relative;
+            animation: modalIn .25s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(0,0,0,.7);
+            color: white;
+            z-index: 2;
+            font-size: 20px;
+        }
+
+        .modal-image {
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .modal-content {
+            padding: 30px;
+        }
+
+        .modal-content h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 35px;
+            margin-bottom: 7px;
+        }
+
+        .modal-price {
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 24px;
+            margin: 15px 0;
+        }
+
+        .modal-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .modal-feature {
+            background: var(--light);
+            padding: 10px 14px;
+            border-radius: 7px;
+            font-size: 13px;
+        }
+
+        /* EMPTY */
+
+        .empty {
+            display: none;
+            grid-column: 1/-1;
+            padding: 50px;
+            text-align: center;
+            color: var(--muted);
+            background: var(--light);
+            border-radius: 15px;
+        }
+
+        /* TOAST */
+
+        .toast {
+            position: fixed;
+            bottom: 95px;
+            left: 50%;
+            transform: translate(-50%, 20px);
+            background: var(--dark);
+            color: white;
+            padding: 13px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            opacity: 0;
+            pointer-events: none;
+            transition: .3s;
+            z-index: 700;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+            nav {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .search-box {
+                grid-template-columns: 1fr 1fr;
+                gap: 4px;
+            }
+
+            .search-field:nth-child(2) {
+                border-right: none;
+            }
+
+            .search-button {
+                height: 48px;
+                grid-column: 1/-1;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .categories {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .hero {
+                min-height: 700px;
+            }
+
+            .hero-content {
+                padding-top: 100px;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .search-box {
+                grid-template-columns: 1fr;
+            }
+
+            .search-field {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 11px;
+            }
+
+            .search-button {
+                grid-column: auto;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 25px 0;
+            }
+
+            .stat:nth-child(2) {
+                border: none;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .section-header {
+                display: block;
+            }
+
+            .view-all {
+                display: inline-block;
+                margin-top: 20px;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .categories {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .category {
+                height: 220px;
+            }
+
+            .about-images {
+                padding-right: 25px;
+                padding-bottom: 40px;
+            }
+
+            .about-main {
+                height: 400px;
+            }
+
+            .about-small {
+                width: 160px;
+                height: 130px;
+            }
+
+            .about-text h2,
+            .contact-info h2 {
+                font-size: 38px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 22px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .copyright {
+                display: block;
+            }
+
+            .copyright span {
+                display: block;
+                margin-top: 7px;
+            }
+
+            .modal-image {
+                height: 270px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container navbar">
+
+        <a href="#" class="logo">
+            <div class="logo-icon">⌂</div>
+            Viva<span>Lar</span>
+        </a>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#imoveis">Imóveis</a>
+            <a href="#sobre">Sobre nós</a>
+            <a href="#categorias">Categorias</a>
+            <a href="#contato">Contato</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-btn" id="darkModeBtn" title="Modo escuro">☾</button>
+            <button class="icon-btn menu-btn" id="menuBtn">☰</button>
+        </div>
+
+    </div>
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="inicio">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    Imóveis selecionados
+                </div>
+
+                <h1>
+                    O lugar onde<br>
+                    sua história começa.
+                </h1>
+
+                <p>
+                    Encontre imóveis exclusivos escolhidos para combinar
+                    com seu estilo de vida, seus sonhos e seu futuro.
+                </p>
+
+                <form class="search-box" id="searchForm">
+
+                    <div class="search-field">
+                        <label>Localização</label>
+                        <input
+                            type="text"
+                            id="locationInput"
+                            placeholder="Cidade ou bairro">
+                    </div>
+
+                    <div class="search-field">
+                        <label>Tipo</label>
+                        <select id="typeInput">
+                            <option value="">Todos</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Apartamento">Apartamento</option>
+                            <option value="Cobertura">Cobertura</option>
+                            <option value="Terreno">Terreno</option>
+                        </select>
+                    </div>
+
+                    <div class="search-field">
+                        <label>Preço máximo</label>
+                        <select id="priceInput">
+                            <option value="">Sem limite</option>
+                            <option value="500000">R$ 500 mil</option>
+                            <option value="1000000">R$ 1 milhão</option>
+                            <option value="2000000">R$ 2 milhões</option>
+                            <option value="5000000">R$ 5 milhões</option>
+                        </select>
+                    </div>
+
+                    <button class="search-button">
+                        Buscar imóveis
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+        <div class="container stats-grid">
+
+            <div class="stat">
+                <strong>850+</strong>
+                <span>Imóveis disponíveis</span>
+            </div>
+
+            <div class="stat">
+                <strong>12</strong>
+                <span>Anos de experiência</span>
+            </div>
+
+            <div class="stat">
+                <strong>4.8k</strong>
+                <span>Clientes atendidos</span>
+            </div>
+
+            <div class="stat">
+                <strong>98%</strong>
+                <span>Clientes satisfeitos</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- IMÓVEIS -->
+
+    <section id="imoveis">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-title">
+
+                    <div class="eyebrow">
+                        Nossa seleção
+                    </div>
+
+                    <h2>
+                        Imóveis que merecem<br>
+                        ser chamados de lar.
+                    </h2>
+
+                    <p>
+                        Conheça algumas das propriedades mais especiais
+                        disponíveis em nossa carteira.
+                    </p>
+
+                </div>
+
+                <a href="#imoveis" class="view-all">
+                    Ver todos os imóveis →
+                </a>
+
+            </div>
+
+
+            <div class="property-grid" id="propertyGrid"></div>
+
+            <div class="empty" id="emptyState">
+                <h3>Nenhum imóvel encontrado</h3>
+                <p>Tente alterar os filtros da busca.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SOBRE -->
+
+    <section class="about" id="sobre">
+
+        <div class="container about-grid">
+
+            <div class="about-images">
+
+                <img
+                    class="about-main"
+                    src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85"
+                    alt="Interior de imóvel de luxo">
+
+                <img
+                    class="about-small"
+                    src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=85"
+                    alt="Sala elegante">
+
+            </div>
+
+
+            <div class="about-text">
+
+                <div class="eyebrow">
+                    Sobre a VivaLar
+                </div>
+
+                <h2>
+                    Mais do que imóveis.
+                    Criamos novos começos.
+                </h2>
+
+                <p>
+                    A VivaLar nasceu com uma missão simples: tornar a busca
+                    pelo imóvel ideal uma experiência agradável, transparente
+                    e personalizada.
+                </p>
+
+                <ul class="check-list">
+
+                    <li>
+                        Atendimento personalizado do início ao fim
+                    </li>
+
+                    <li>
+                        Imóveis selecionados com rigor
+                    </li>
+
+                    <li>
+                        Consultores especializados
+                    </li>
+
+                    <li>
+                        Negociação segura e transparente
+                    </li>
+
+                </ul>
+
+                <a href="#contato" class="primary-btn">
+                    Fale com um consultor
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIAS -->
+
+    <section id="categorias">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-title">
+
+                    <div class="eyebrow">
+                        Encontre seu estilo
+                    </div>
+
+                    <h2>
+                        Explore por categoria
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="categories">
+
+                <a class="category" href="#imoveis" data-category="Apartamento">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=85"
+                        alt="Apartamento">
+
+                    <div class="category-content">
+                        <h3>Apartamentos</h3>
+                        <span>124 imóveis</span>
+                    </div>
+
+                </a>
+
+
+                <a class="category" href="#imoveis" data-category="Casa">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=700&q=85"
+                        alt="Casa">
+
+                    <div class="category-content">
+                        <h3>Casas</h3>
+                        <span>87 imóveis</span>
+                    </div>
+
+                </a>
+
+
+                <a class="category" href="#imoveis" data-category="Cobertura">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=700&q=85"
+                        alt="Cobertura">
+
+                    <div class="category-content">
+                        <h3>Coberturas</h3>
+                        <span>32 imóveis</span>
+                    </div>
+
+                </a>
+
+
+                <a class="category" href="#imoveis" data-category="Terreno">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=700&q=85"
+                        alt="Terreno">
+
+                    <div class="category-content">
+                        <h3>Terrenos</h3>
+                        <span>56 imóveis</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                Seu próximo endereço
+            </div>
+
+            <h2>
+                Pronto para encontrar
+                seu lugar no mundo?
+            </h2>
+
+            <p>
+                Conte para nós o que você procura e um de nossos
+                consultores encontrará as melhores opções para você.
+            </p>
+
+            <a href="#contato" class="primary-btn">
+                Quero encontrar meu imóvel
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTATO -->
+
+    <section id="contato">
+
+        <div class="container contact-grid">
+
+            <div class="contact-info">
+
+                <div class="eyebrow">
+                    Vamos conversar
+                </div>
+
+                <h2>
+                    Seu novo lar
+                    pode estar a uma mensagem.
+                </h2>
+
+                <p>
+                    Preencha o formulário e nossa equipe entrará em contato
+                    para entender exatamente o que você procura.
+                </p>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">📞</div>
+
+                    <div>
+                        <small>Telefone</small>
+                        (41) 3333-9090
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">✉</div>
+
+                    <div>
+                        <small>E-mail</small>
+                        contato@vivalar.com.br
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">📍</div>
+
+                    <div>
+                        <small>Endereço</small>
+                        Av. das Araucárias, 850 — Curitiba, PR
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <form class="contact-form" id="contactForm">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Seu nome"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="(00) 00000-0000"
+                            required>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>E-mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="voce@email.com"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>O que você procura?</label>
+
+                    <select id="interest">
+
+                        <option>Comprar um imóvel</option>
+                        <option>Alugar um imóvel</option>
+                        <option>Vender meu imóvel</option>
+                        <option>Investir em imóveis</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Mensagem</label>
+
+                    <textarea
+                        id="message"
+                        placeholder="Conte um pouco sobre o imóvel que você procura..."
+                        required></textarea>
+
+                </div>
+
+
+                <button class="submit-btn">
+                    Enviar mensagem
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="#" class="logo">
+                    <div class="logo-icon">⌂</div>
+                    Viva<span>Lar</span>
+                </a>
+
+                <p>
+                    Encontramos lugares especiais para pessoas especiais.
+                    Seu próximo capítulo começa aqui.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>Comprar</h4>
+
+                <ul>
+                    <li><a href="#imoveis">Apartamentos</a></li>
+                    <li><a href="#imoveis">Casas</a></li>
+                    <li><a href="#imoveis">Coberturas</a></li>
+                    <li><a href="#imoveis">Terrenos</a></li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>Empresa</h4>
+
+                <ul>
+                    <li><a href="#sobre">Sobre nós</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#">Trabalhe conosco</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>Atendimento</h4>
+
+                <ul>
+                    <li>Seg — Sex: 8h às 18h</li>
+                    <li>Sábado: 9h às 13h</li>
+                    <li>Curitiba — PR</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            <span>
+                © 2026 VivaLar Imóveis. Todos os direitos reservados.
+            </span>
+
+            <span>
+                Feito para encontrar novos começos.
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- WHATSAPP -->
+
+<a
+    class="whatsapp"
+    href="https://wa.me/5541999999999?text=Olá!%20Gostaria%20de%20encontrar%20um%20imóvel."
+    target="_blank"
+    title="Falar pelo WhatsApp">
+
+    ☎
+
+</a>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="propertyModal">
+
+    <div class="modal-box">
+
+        <button class="modal-close" id="modalClose">
+            ×
+        </button>
+
+        <img
+            id="modalImage"
+            class="modal-image"
+            src=""
+            alt="">
+
+        <div class="modal-content">
+
+            <div class="property-location" id="modalLocation"></div>
+
+            <h2 id="modalTitle"></h2>
+
+            <div class="modal-price" id="modalPrice"></div>
+
+            <p id="modalDescription"></p>
+
+            <div class="modal-features" id="modalFeatures"></div>
+
+            <a
+                class="primary-btn"
+                href="#contato"
+                id="modalContact">
+
+                Tenho interesse neste imóvel
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="toast" id="toast">
+    Mensagem enviada com sucesso!
+</div>
+
+
+<script>
+
+    /* ============================
+       BANCO DE IMÓVEIS
+    ============================ */
+
+    const properties = [
+
+        {
+            id: 1,
+            title: "Casa Aurora",
+            location: "Jardim Social, Curitiba — PR",
+            type: "Casa",
+            price: 1850000,
+            priceText: "R$ 1.850.000",
+            bedrooms: 4,
+            bathrooms: 3,
+            area: 280,
+            parking: 3,
+            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85",
+            description: "Casa contemporânea com ambientes amplos, jardim privativo, excelente iluminação natural e acabamento sofisticado."
+        },
+
+        {
+            id: 2,
+            title: "Apartamento Lumière",
+            location: "Batel, Curitiba — PR",
+            type: "Apartamento",
+            price: 890000,
+            priceText: "R$ 890.000",
+            bedrooms: 3,
+            bathrooms: 2,
+            area: 142,
+            parking: 2,
+            image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85",
+            description: "Apartamento moderno em uma das regiões mais desejadas de Curitiba, próximo a restaurantes, lojas e serviços."
+        },
+
+        {
+            id: 3,
+            title: "Cobertura Vista 360°",
+            location: "Água Verde, Curitiba — PR",
+            type: "Cobertura",
+            price: 2450000,
+            priceText: "R$ 2.450.000",
+            bedrooms: 4,
+            bathrooms: 4,
+            area: 310,
+            parking: 4,
+            image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=85",
+            description: "Cobertura duplex com vista panorâmica, terraço privativo, piscina e área gourmet completa."
+        },
+
+        {
+            id: 4,
+            title: "Casa Bosque",
+            location: "Santa Felicidade, Curitiba — PR",
+            type: "Casa",
+            price: 1250000,
+            priceText: "R$ 1.250.000",
+            bedrooms: 3,
+            bathrooms: 3,
+            area: 220,
+            parking: 2,
+            image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=85",
+            description: "Residência cercada de verde, com arquitetura acolhedora, espaço gourmet e amplo quintal."
+        },
+
+        {
+            id: 5,
+            title: "Apartamento Skyline",
+            location: "Centro Cívico, Curitiba — PR",
+            type: "Apartamento",
+            price: 640000,
+            priceText: "R$ 640.000",
+            bedrooms: 2,
+            bathrooms: 2,
+            area: 98,
+            parking: 1,
+            image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85",
+            description: "Apartamento sofisticado com vista privilegiada, condomínio completo e localização estratégica."
+        },
+
+        {
+            id: 6,
+            title: "Terreno Reserva",
+            location: "Campo Comprido, Curitiba — PR",
+            type: "Terreno",
+            price: 780000,
+            priceText: "R$ 780.000",
+            bedrooms: 0,
+            bathrooms: 0,
+            area: 620,
+            parking: 0,
+            image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85",
+            description: "Excelente terreno residencial em região valorizada, ideal para construção de residência de alto padrão."
+        },
+
+        {
+            id: 7,
+            title: "Casa Piemonte",
+            location: "Ecoville, Curitiba — PR",
+            type: "Casa",
+            price: 3200000,
+            priceText: "R$ 3.200.000",
+            bedrooms: 5,
+            bathrooms: 5,
+            area: 420,
+            parking: 4,
+            image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=85",
+            description: "Residência de alto padrão com piscina, escritório, cinco suítes e projeto arquitetônico exclusivo."
+        },
+
+        {
+            id: 8,
+            title: "Apartamento Garden",
+            location: "Cabral, Curitiba — PR",
+            type: "Apartamento",
+            price: 1100000,
+            priceText: "R$ 1.100.000",
+            bedrooms: 3,
+            bathrooms: 3,
+            area: 165,
+            parking: 2,
+            image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85",
+            description: "Apartamento garden com área externa privativa, churrasqueira e acabamento contemporâneo."
+        },
+
+        {
+            id: 9,
+            title: "Cobertura Imperial",
+            location: "Bigorrilho, Curitiba — PR",
+            type: "Cobertura",
+            price: 4200000,
+            priceText: "R$ 4.200.000",
+            bedrooms: 5,
+            bathrooms: 5,
+            area: 480,
+            parking: 5,
+            image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85",
+            description: "Cobertura de altíssimo padrão com espaços generosos, área externa e vista privilegiada."
+        }
+
+    ];
+
+
+    /* ============================
+       ELEMENTOS
+    ============================ */
+
+    const propertyGrid = document.getElementById("propertyGrid");
+    const emptyState = document.getElementById("emptyState");
+
+    const locationInput = document.getElementById("locationInput");
+    const typeInput = document.getElementById("typeInput");
+    const priceInput = document.getElementById("priceInput");
+
+    const searchForm = document.getElementById("searchForm");
+
+    const modal = document.getElementById("propertyModal");
+    const modalClose = document.getElementById("modalClose");
+
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalLocation = document.getElementById("modalLocation");
+    const modalPrice = document.getElementById("modalPrice");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalFeatures = document.getElementById("modalFeatures");
+
+    const toast = document.getElementById("toast");
+
+
+    /* ============================
+       FAVORITOS
+    ============================ */
+
+    let favorites = JSON.parse(
+        localStorage.getItem("vivalar_favorites") || "[]"
+    );
+
+
+    /* ============================
+       FORMATADOR DE PREÇO
+    ============================ */
+
+    function formatPrice(value) {
+
+        return new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+            maximumFractionDigits: 0
+        }).format(value);
+
+    }
+
+
+    /* ============================
+       RENDERIZAR IMÓVEIS
+    ============================ */
+
+    function renderProperties(list = properties) {
+
+        propertyGrid.innerHTML = "";
+
+        if (list.length === 0) {
+
+            emptyState.style.display = "block";
+
+            return;
+
+        }
+
+        emptyState.style.display = "none";
+
+
+        list.forEach(property => {
+
+            const isFavorite = favorites.includes(property.id);
+
+            const card = document.createElement("article");
+
+            card.className = "property-card";
+
+            card.innerHTML = `
+
+                <div class="property-image">
+
+                    <img
+                        src="${property.image}"
+                        alt="${property.title}"
+                        loading="lazy">
+
+                    <span class="tag">
+                        ${property.type}
+                    </span>
+
+                    <button
+                        class="favorite ${isFavorite ? "active" : ""}"
+                        data-id="${property.id}"
+                        title="Favoritar">
+
+                        ${isFavorite ? "♥" : "♡"}
+
+                    </button>
+
+                </div>
+
+
+                <div class="property-body">
+
+                    <div class="property-location">
+                        📍 ${property.location}
+                    </div>
+
+                    <h3 class="property-name">
+                        ${property.title}
+                    </h3>
+
+                    <p class="property-description">
+                        ${property.description}
+                    </p>
+
+                    <div class="property-features">
+
+                        <span>🛏 ${property.bedrooms} quartos</span>
+
+                        <span>♨ ${property.bathrooms} banheiros</span>
+
+                        <span>▣ ${property.area}m²</span>
+
+                    </div>
+
+
+                    <div class="property-footer">
+
+                        <div class="price">
+
+                            <small>A partir de</small>
+
+                            <strong>
+                                ${property.priceText}
+                            </strong>
+
+                        </div>
+
+                        <button
+                            class="details-btn"
+                            data-details="${property.id}">
+
+                            Ver detalhes
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            propertyGrid.appendChild(card);
+
+        });
+
+    }
+
+
+    renderProperties();
+
+
+    /* ============================
+       FAVORITAR
+    ============================ */
+
+    document.addEventListener("click", function(event) {
+
+        const favoriteButton = event.target.closest(".favorite");
+
+        if (!favoriteButton) return;
+
+        const id = Number(favoriteButton.dataset.id);
+
+        if (favorites.includes(id)) {
+
+            favorites = favorites.filter(
+                favoriteId => favoriteId !== id
+            );
+
+            showToast("Removido dos favoritos");
+
+        } else {
+
+            favorites.push(id);
+
+            showToast("Imóvel salvo nos favoritos ❤️");
+
+        }
+
+        localStorage.setItem(
+            "vivalar_favorites",
+            JSON.stringify(favorites)
+        );
+
+        renderProperties(getCurrentFilteredList());
+
+    });
+
+
+    /* ============================
+       DETALHES
+    ============================ */
+
+    document.addEventListener("click", function(event) {
+
+        const detailsButton =
+            event.target.closest("[data-details]");
+
+        if (!detailsButton) return;
+
+        const id = Number(detailsButton.dataset.details);
+
+        openProperty(id);
+
+    });
+
+
+    function openProperty(id) {
+
+        const property = properties.find(
+            item => item.id === id
+        );
+
+        if (!property) return;
+
+
+        modalImage.src = property.image;
+
+        modalImage.alt = property.title;
+
+        modalTitle.textContent = property.title;
+
+        modalLocation.textContent =
+            "📍 " + property.location;
+
+        modalPrice.textContent =
+            property.priceText;
+
+        modalDescription.textContent =
+            property.description;
+
+
+        modalFeatures.innerHTML = `
+
+            <div class="modal-feature">
+                🛏 ${property.bedrooms} quartos
+            </div>
+
+            <div class="modal-feature">
+                🚿 ${property.bathrooms} banheiros
+            </div>
+
+            <div class="modal-feature">
+                📐 ${property.area} m²
+            </div>
+
+            <div class="modal-feature">
+                🚗 ${property.parking} vagas
+            </div>
+
+            <div class="modal-feature">
+                🏠 ${property.type}
+            </div>
+
+        `;
+
+
+        modal.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeModal() {
+
+        modal.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    modalClose.addEventListener("click", closeModal);
+
+
+    modal.addEventListener("click", function(event) {
+
+        if (event.target === modal) {
+            closeModal();
+        }
+
+    });
+
+
+    document.addEventListener("keydown", function(event) {
+
+        if (event.key === "Escape") {
+            closeModal();
+        }
+
+    });
+
+
+    /* ============================
+       BUSCA
+    ============================ */
+
+    function getCurrentFilteredList() {
+
+        const location =
+            locationInput.value
+                .toLowerCase()
+                .trim();
+
+        const type =
+            typeInput.value;
+
+        const maxPrice =
+            priceInput.value
+                ? Number(priceInput.value)
+                : Infinity;
+
+
+        return properties.filter(property => {
+
+            const matchesLocation =
+                !location ||
+                property.location
+                    .toLowerCase()
+                    .includes(location) ||
+                property.title
+                    .toLowerCase()
+                    .includes(location);
+
+            const matchesType =
+                !type ||
+                property.type === type;
+
+            const matchesPrice =
+                property.price <= maxPrice;
+
+            return (
+                matchesLocation &&
+                matchesType &&
+                matchesPrice
+            );
+
+        });
+
+    }
+
+
+    searchForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const filtered = getCurrentFilteredList();
+
+        renderProperties(filtered);
+
+        document.getElementById("imoveis")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+        showToast(
+            `${filtered.length} imóvel(is) encontrado(s)`
+        );
+
+    });
+
+
+    /* ============================
+       CATEGORIAS
+    ============================ */
+
+    document.querySelectorAll(".category")
+        .forEach(category => {
+
+            category.addEventListener("click", function() {
+
+                const selected =
+                    category.dataset.category;
+
+                typeInput.value = selected;
+
+                renderProperties(
+                    getCurrentFilteredList()
+                );
+
+            });
+
+        });
+
+
+    /* ============================
+       FORMULÁRIO
+    ============================ */
+
+    document.getElementById("contactForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("name").value;
+
+            showToast(
+                `Obrigado, ${name}! Entraremos em contato.`
+            );
+
+            this.reset();
+
+        });
+
+
+    /* ============================
+       TOAST
+    ============================ */
+
+    function showToast(message) {
+
+        toast.textContent = message;
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+        }, 3000);
+
+    }
+
+
+    /* ============================
+       MODO ESCURO
+    ============================ */
+
+    const darkModeBtn =
+        document.getElementById("darkModeBtn");
+
+    let darkMode =
+        localStorage.getItem("vivalar_dark") === "true";
+
+
+    function applyDarkMode() {
+
+        if (darkMode) {
+
+            document.body.style.background = "#101412";
+            document.body.style.color = "#f2f2ee";
+
+            document.querySelectorAll(
+                ".property-card, .modal-box"
+            ).forEach(el => {
+
+                el.style.background = "#171c19";
+                el.style.borderColor = "#303732";
+
+            });
+
+            document.querySelectorAll(
+                ".property-description, .property-location"
+            ).forEach(el => {
+
+                el.style.color = "#a7aea9";
+
+            });
+
+            darkModeBtn.textContent = "☀";
+
+        } else {
+
+            document.body.style.background = "";
+            document.body.style.color = "";
+
+            document.querySelectorAll(
+                ".property-card, .modal-box"
+            ).forEach(el => {
+
+                el.style.background = "";
+                el.style.borderColor = "";
+
+            });
+
+            document.querySelectorAll(
+                ".property-description, .property-location"
+            ).forEach(el => {
+
+                el.style.color = "";
+
+            });
+
+            darkModeBtn.textContent = "☾";
+
+        }
+
+    }
+
+
+    darkModeBtn.addEventListener("click", function() {
+
+        darkMode = !darkMode;
+
+        localStorage.setItem(
+            "vivalar_dark",
+            darkMode
+        );
+
+        applyDarkMode();
+
+    });
+
+
+    applyDarkMode();
+
+
+    /* ============================
+       MENU MOBILE
+    ============================ */
+
+    const menuBtn =
+        document.getElementById("menuBtn");
+
+    menuBtn.addEventListener("click", function() {
+
+        const nav = document.querySelector("nav");
+
+        if (nav.style.display === "flex") {
+
+            nav.style.display = "";
+
+        } else {
+
+            nav.style.display = "flex";
+
+            nav.style.position = "absolute";
+            nav.style.top = "86px";
+            nav.style.left = "0";
+            nav.style.right = "0";
+            nav.style.background = "#101412";
+            nav.style.padding = "25px";
+            nav.style.flexDirection = "column";
+            nav.style.alignItems = "flex-start";
+
+        }
+
+    });
+
+
+    /* ============================
+       ANIMAÇÃO AO ENTRAR NA TELA
+    ============================ */
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform =
+                            "translateY(0)";
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: .1
+            }
+        );
+
+
+    document.querySelectorAll(
+        ".property-card, .category, .stat"
+    ).forEach(element => {
+
+        element.style.opacity = "0";
+        element.style.transform = "translateY(20px)";
+        element.style.transition = "opacity .6s ease, transform .6s ease";
+
+        observer.observe(element);
+
+    });
+
+</script>
+
+</body>
+</html>
